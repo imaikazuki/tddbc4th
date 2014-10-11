@@ -1,7 +1,3 @@
-/**
- * Created by kazuki on 10/11/14.
- */
-
 package tddbc4th
 
 import org.junit.Test as test
