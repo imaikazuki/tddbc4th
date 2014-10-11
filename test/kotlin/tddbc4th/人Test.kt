@@ -7,6 +7,7 @@ package tddbc4th
 import org.junit.Test as test
 import kotlin.test.assertEquals
 import tddbc4th.人
+import kotlin.test.fail
 
 class 人Test {
   test fun 名字Test() {
@@ -27,6 +28,22 @@ class 人Test {
   test fun 違う人の氏名Test() {
     val 鈴木一郎 = 人("鈴木", "一郎")
     assertEquals("鈴木一郎", 鈴木一郎.氏名())
+  }
+
+  test fun 名字が空であれば例外Test() {
+    try {
+      val person = 人("", "ほげほげ")
+      fail("名字が空でもインスタンスが返された")
+    } catch ( e : RuntimeException ) {
+    }
+  }
+
+  test fun 名前が空であれば例外Test() {
+    try {
+      val person = 人("ほげほげ", "")
+      fail("名前が空でもインスタンスが返された")
+    } catch ( e: RuntimeException ) {
+    }
   }
 
 }
