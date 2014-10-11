@@ -18,4 +18,15 @@ class 人Test {
     val 太郎 = 人("ぴよぴよ", "太郎")
     assertEquals("太郎", 太郎.名前)
   }
+
+  test fun 氏名Test() {
+    val 佐藤太郎 = 人("佐藤", "太郎")
+    assertEquals("佐藤太郎", 佐藤太郎.氏名())
+  }
+
+  test fun 違う人の氏名Test() {
+    val 鈴木一郎 = 人("鈴木", "一郎")
+    assertEquals("鈴木一郎", 鈴木一郎.氏名())
+  }
+
 }
