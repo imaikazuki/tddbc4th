@@ -27,6 +27,7 @@ class 人Test {
   }
 
   test fun 名字が空であれば例外Test() {
+    // 言語レベルで引数にNULLが入りません
     try {
       val person = 人("", "ほげほげ")
       fail("名字が空でもインスタンスが返された")
@@ -35,6 +36,7 @@ class 人Test {
   }
 
   test fun 名前が空であれば例外Test() {
+    // 言語レベルで引数にNULLが入りません
     try {
       val person = 人("ほげほげ", "")
       fail("名前が空でもインスタンスが返された")
@@ -42,4 +44,35 @@ class 人Test {
     }
   }
 
+  test fun 名字が空白文字のみであれば例外Test() {
+    try {
+      val person = 人(" ¥t¥n¥r　", "ほげほげ")
+      fail("名字が空白文字でもインスタンスが返された")
+    } catch ( e : RuntimeException ) {
+    }
+  }
+
+  test fun 名字の字の間に空白文字入ってる人はゆるすTest() {
+    try {
+      val person = 人("今 ¥t¥n¥r　井", "ほげほげ")
+      assertEquals("今 ¥t¥n¥r　井", person.名字)
+    } catch ( e : RuntimeException ) {
+    }
+  }
+
+  test fun 名前が空白文字のみであれば例外Test() {
+    try {
+      val person = 人("あれこれ", " ¥t¥n¥r　")
+      fail("名前が空白文字でもインスタンスが返された")
+    } catch ( e : RuntimeException ) {
+    }
+  }
+
+  test fun 名前の字の間に空白文字入ってる人はゆるすTest() {
+    try {
+      val person = 人("あれこれ", "太 ¥t¥n¥r　郎")
+      assertEquals("太 ¥t¥n¥r　郎", person.名前)
+    } catch ( e : RuntimeException ) {
+    }
+  }
 }
