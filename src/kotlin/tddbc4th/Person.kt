@@ -8,7 +8,12 @@ class 人(_名字 : String, _名前 : String, _性別 : 性別型) {
   fun 氏名() : String {
     return 名字 + 名前
   }
+
+  fun 結婚できるかな(相手 : 人) : Boolean {
+    return 性別 != 相手.性別
+  }
 }
+
 
 fun myTrim(str : String) : String {
   return str.replaceAll("^[ ¥t¥r¥n　]*", "").replaceAll("[ ¥t¥r¥n　]*$", "")

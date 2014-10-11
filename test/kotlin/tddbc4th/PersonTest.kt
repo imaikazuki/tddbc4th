@@ -2,8 +2,9 @@ package tddbc4th
 
 import org.junit.Test as test
 import kotlin.test.assertEquals
-import tddbc4th.人
 import kotlin.test.fail
+import kotlin.test.assertTrue
+import kotlin.test.assertFalse
 
 class 人Test {
   test fun 名字Test() {
@@ -94,4 +95,26 @@ class 人Test {
     val person = 人("名字", "名前", 性別型.女性)
     assertEquals(性別型.女性, person.性別)
   }
+
+
+  test fun 異性と結婚できるTest() {
+    val この男の人 = 人("名字", "名前", 性別型.男性)
+    val この女の人 = 人("名字", "名前", 性別型.女性)
+
+    assertTrue(この男の人.結婚できるかな(この女の人))
+    assertTrue(この女の人.結婚できるかな(この男の人))
+  }
+
+  test fun 同性と結婚できないTest() {
+    val この男の人 = 人("名字", "名前", 性別型.男性)
+    val あの男の人 = 人("名字", "名前", 性別型.男性)
+
+    assertFalse(この男の人.結婚できるかな(あの男の人))
+
+    val この女の人 = 人("名字", "名前", 性別型.女性)
+    val あの女の人 = 人("名字", "名前", 性別型.女性)
+
+    assertFalse(この女の人.結婚できるかな(あの女の人))
+  }
+
 }
