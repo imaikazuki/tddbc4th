@@ -75,4 +75,13 @@ class 人Test {
     } catch ( e : RuntimeException ) {
     }
   }
+
+  test fun 文字列の前後にある空白などを除外するTest() {
+    assertEquals("空白を含まない文字列", myTrim("空白を含まない文字列"))
+    assertEquals("先頭にスペースを含む文字列", myTrim(" 先頭にスペースを含む文字列"))
+    assertEquals("先頭に空白を含む文字列", myTrim("　先頭に空白を含む文字列"))
+    assertEquals("先頭にtabを含む文字列", myTrim("¥t先頭にtabを含む文字列"))
+    assertEquals("先頭に改行を含む文字列", myTrim("¥n先頭に改行を含む文字列"))
+    assertEquals("先頭にキャリッジを含む文字列", myTrim("¥r先頭にキャリッジを含む文字列"))
+  }
 }
